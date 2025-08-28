@@ -17,7 +17,7 @@ graceful_exit() {
     echo ""
     echo ""
     echo -e "${GREEN}╔══════════════════════════════════════════════════════════════════╗${NC}"
-    echo -e "${GREEN}║                        👋 Thank You! 👋                         ║${NC}"
+    echo -e "${GREEN}║                        👋 Thank You! 👋                          ║${NC}"
     echo -e "${GREEN}╚══════════════════════════════════════════════════════════════════╝${NC}"
     echo ""
     echo -e "${CYAN}🙏 Thank you for using Testnet Terminal's OneClick Setup!${NC}"
