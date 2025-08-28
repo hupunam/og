@@ -245,7 +245,7 @@ install_og_storage_node() {
     PRIVATE_KEY=$(echo "$PRIVATE_KEY" | sed 's/^0x//')
 
     # Update config.toml with private key
-    sed -i "s/miner_key = \"\"/miner_key = \"$PRIVATE_KEY\"/" "$HOME/0g-storage-node/run/config.toml"
+    sed -i "s/Your_Wallet_Private_key_Without_0x/$PRIVATE_KEY/" "$HOME/0g-storage-node/run/config.toml"
     print_success "✅ Private key successfully added to config.toml"
 
     # Ask about RPC endpoint
@@ -416,7 +416,7 @@ delete_og_storage_node() {
 download_snapshot() {
     echo ""
     echo -e "${PURPLE}╔══════════════════════════════════════════════════════════════════╗${NC}"
-    echo -e "${PURPLE}║                   📥 Download Snapshot 📥                       ║${NC}"
+    echo -e "${PURPLE}║                   📥 Download Snapshot 📥                        ║${NC}"
     echo -e "${PURPLE}╚══════════════════════════════════════════════════════════════════╝${NC}"
     echo ""
 
