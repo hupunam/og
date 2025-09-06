@@ -20,8 +20,22 @@ while true; do
         -d '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}')
     
     # Extract hex block number and convert to decimal
-    remote_block_hex=$(echo "$remote_response" | grep -o '"result":"0x[0-9a-fA-F]*"' | cut -d'"' -f4)
-    remote_block=$((remote_block_hex))
+    remote_block_hex=$(echo "$remote_response" | grep -o '"result":"0x[0-9a-fA-F]*"' | cut -d'"' -f4 | tr -d '\r\n ')
+    
+    if [ -n "$remote_block_hex" ] && [ "$remote_block_hex" != "0x" ]; then
+        # Use printf for more reliable hex to decimal conversion
+        remote_block=$(printf "%d" "$remote_block_hex" 2>/dev/null)
+        if [ -z "$remote_block" ] || [ "$remote_block" -eq 0 ]; then
+            # Fallback: use bc for conversion
+            remote_block=$(echo "ibase=16; ${remote_block_hex#0x}" | bc 2>/dev/null)
+        fi
+    else
+        remote_block=0
+        echo "Warning: Could not parse block number from RPC response"
+    fi
+    
+    # Ensure remote_block is not empty
+    remote_block=${remote_block:-0}
 
     # Calculate differences
     diff=$((logSyncHeight - remote_block))
