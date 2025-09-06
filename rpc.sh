@@ -37,8 +37,8 @@ while true; do
         current_rate=$(echo "scale=4; $blocks_synced / $elapsed" | bc)
         sync_history+=($current_rate)
         
-        # Keep only last 10 measurements for moving average
-        if [ ${#sync_history[@]} -gt 10 ]; then
+        # Keep only last 5 measurements for moving average (more responsive)
+        if [ ${#sync_history[@]} -gt 5 ]; then
             sync_history=("${sync_history[@]:1}")
         fi
         
