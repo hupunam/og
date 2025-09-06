@@ -103,7 +103,7 @@ while true; do
     remote_display="${remote_block:-N/A}"
     peers_display="${connectedPeers:-N/A}"
     
-    echo -e "🧱 LOGS: ${GREEN}$log_display${NC} | 🌐 CURRENT: ${PURPLE}$remote_display${NC} | 🤝 PEERS: ${BLUE}$peers_display${NC} | STATUS: ${color}${status}${NC} $eta_display"
+    echo -e "🧱 LOGS: \033[0;32m$log_display\033[0m | 🌐 CURRENT: \033[0;35m$remote_display\033[0m | 🤝 PEERS: \033[0;34m$peers_display\033[0m | STATUS: ${color}${status}\033[0m $eta_display"
 
     # Update previous values
     prev_logSyncHeight=${logSyncHeight:-$prev_logSyncHeight}
