@@ -41,6 +41,9 @@ while true; do
     diff=$((logSyncHeight - remote_block))
     behind=$((remote_block - logSyncHeight))
 
+    # Debug: uncomment to see values
+    # echo "Debug: logSyncHeight=$logSyncHeight, remote_block=$remote_block, diff=$diff, behind=$behind"
+
     # Time tracking
     current_time=$(date +%s)
     elapsed=$((current_time - prev_time))
