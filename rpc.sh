@@ -14,9 +14,9 @@ YELLOW="\033[0;33m"
 BLUE="\033[0;34m"
 
 #pr
-echo -e "${YELLOW}==============================================+${NC}"
+echo -e "${YELLOW}=================================================================${NC}"
 echo -e "           🚀 ${YELLOW}Testnet Terminal 0gLabs Node Block Checker 🔗${NC}           "
-echo -e "${YELLOW}==============================================${NC}"
+echo -e "${YELLOW}=================================================================${NC}"
 echo
 echo -e "  ${YELLOW}🔗 Stay Connected:${NC}"
 echo -e "  ${BLUE}📱 Telegram: ${NC}https://t.me/TestnetTerminal"
