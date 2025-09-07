@@ -126,7 +126,7 @@ while true; do
             else
                 eta_display="🕒 ETA: Collecting data... (${#sync_history[@]}/15 samples)"
             fi
-        fi
+            
     # Print result with enhanced colors and better formatting
     log_display="${logSyncHeight:-N/A}"
     remote_display="${remote_block:-N/A}"
