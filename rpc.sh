@@ -52,17 +52,31 @@ while true; do
     eta_display=""
 
     # Determine status and ETA
+    # Define color codes
+    RED="\033[1;31m"
+    GREEN="\033[1;32m"
+    BLUE="\033[1;34m"
+    NC="\033[0m"  # No Color
+
     if [ "$diff" -ge 0 ]; then
-        status="⚡ Ahead by $diff blocks"
-        color="\033[36m"
+        # Ahead: Blue block count
+        colored_diff="${BLUE}${diff}${NC}"
+        status="⚡ Ahead by ${colored_diff} blocks"
         eta_display="🕒 ETA: Node is ahead"
+
     elif [ "$behind" -le 15 ]; then
-        status="✅ Synced (≤15 blocks behind)"
-        color="\033[32m"
+        # Synced: Green block count
+        colored_behind="${GREEN}${behind}${NC}"
+        status="✅ Synced (≤${colored_behind} blocks behind)"
         eta_display="🕒 ETA: Synced"
+
     else
-        status="⏳ Behind by $behind blocks"
-        color="\033[33m"
+        # Behind: Red block count
+        colored_behind="${RED}${behind}${NC}"
+        status="⏳ Behind by ${colored_behind} blocks"
+        eta_display="🕒 ETA: Calculating..."
+    fi
+
         
         # Always show ETA calculation status from first iteration
         if [ "$first_run" = true ]; then
@@ -121,7 +135,7 @@ while true; do
     peers_display="${connectedPeers:-N/A}"
     
     # Use bright colors for better visibility
-    echo -e "🧱 LOGS: \033[1;32m$log_display\033[0m | 🌐 CURRENT: \033[1;35m$remote_display\033[0m | 🤝 PEERS: \033[1;34m$peers_display\033[0m | STATUS: ${status_color}${status}\033[0m $eta_display"
+    echo -e "🧱 LOCAL: \033[1;32m$log_display\033[0m | 🌐 CURRENT: \033[1;35m$remote_display\033[0m | 🤝 PEERS: \033[1;34m$peers_display\033[0m | STATUS: ${status} $eta_display"
 
     # Update previous values
     prev_logSyncHeight=${logSyncHeight:-$prev_logSyncHeight}
