@@ -75,12 +75,12 @@ while true; do
             
             # Store sync rate for averaging (keep last 8 samples for 40-second window)
             sync_history+=($current_rate)
-            if [ ${#sync_history[@]} -gt 8 ]; then
+            if [ ${#sync_history[@]} -gt 15 ]; then
                 sync_history=("${sync_history[@]:1}")
             fi
             
             # Calculate average sync rate from collected samples
-            if [ ${#sync_history[@]} -ge 2 ]; then
+            if [ ${#sync_history[@]} -ge 15 ]; then
                 sum=0
                 for rate in "${sync_history[@]}"; do
                     sum=$(echo "$sum + $rate" | bc)
@@ -110,7 +110,7 @@ while true; do
                     eta_display="🕒 ETA: Very slow sync (${avg_rate} bl/s)"
                 fi
             else
-                eta_display="🕒 ETA: Collecting data... (${#sync_history[@]}/2 samples)"
+                eta_display="🕒 ETA: Collecting data... (${#sync_history[@]}/15 samples)"
             fi
         fi
     fi
