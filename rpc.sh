@@ -10,6 +10,22 @@ RED="\033[0;31m"   #0 for normar and 1 for bold
 GREEN="\033[1;32m"
 BLUE="\033[1;34m"
 NC="\033[0m"  # No Color
+YELLOW="\033[0;33m"
+BLUE="\033[0;34m"
+
+#pr
+echo -e "${YELLOW}==============================================+${NC}"
+echo -e "           🚀 ${YELLOW}Testnet Terminal 0gLabs Node Block Checker 🔗${NC}           "
+echo -e "${YELLOW}==============================================${NC}"
+echo
+echo -e "  ${YELLOW}🔗 Stay Connected:${NC}"
+echo -e "  ${BLUE}📱 Telegram: ${NC}https://t.me/TestnetTerminal"
+echo -e "  ${BLUE}🐙 GitHub:   ${NC}https://github.com/TestnetTerminal"
+echo -e "  ${BLUE}🐦 Twitter:  ${NC}https://x.com/TestnetTerminal"
+echo -e "  ${BLUE}🆘 Support:  ${NC}https://t.me/Amit3701"
+echo
+echo -e "🚦 Starting block monitoring.....${NC}"
+echo
 
 while true; do
     # Local node request
