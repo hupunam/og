@@ -6,7 +6,7 @@ sync_history=()
 first_run=true
 
 # Color codes
-RED="\033[1;31m"
+RED="\033[0;31m"   #0 for normar and 1 for bold
 GREEN="\033[1;32m"
 BLUE="\033[1;34m"
 NC="\033[0m"  # No Color
